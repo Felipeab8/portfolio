@@ -1,147 +1,418 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" data-lang="pt">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Felipe's Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Felipe Antunes Bachiega | Consultor Jr na KPMG</title>
+    <meta name="description" content="Consultor Jr na KPMG e estudante de Ciência da Computação. Dashboards em Power BI e painéis web feitos do zero." />
+    <meta name="author" content="Felipe Antunes Bachiega" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#e9ebe7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#141719" media="(prefers-color-scheme: dark)" />
+    <link rel="canonical" href="https://felipeab8.github.io/portfolio/" />
+
+    <!-- Prévia ao compartilhar o link (LinkedIn, WhatsApp etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://felipeab8.github.io/portfolio/" />
+    <meta property="og:title" content="Felipe Antunes Bachiega | Consultor Jr na KPMG" />
+    <meta property="og:description" content="Consultor Jr na KPMG. Dashboards em Power BI e painéis web feitos do zero." />
+    <meta property="og:image" content="https://felipeab8.github.io/portfolio/assets/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='4' width='28' height='20' rx='3' fill='%23171a1c'/%3E%3Crect x='7' y='15' width='4' height='6' fill='%23e9ebe7'/%3E%3Crect x='14' y='11' width='4' height='10' fill='%23e9ebe7'/%3E%3Crect x='21' y='7' width='4' height='14' fill='%2334c77b'/%3E%3Crect x='11' y='26' width='10' height='2.5' rx='1' fill='%23171a1c'/%3E%3C/svg%3E" />
+
+    <!-- Define o idioma antes de pintar a página: ?lang=en na URL, escolha salva ou idioma do navegador -->
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#0d1117',
-              secondary: '#1f2937',
-              accent: '#3b82f6',
-              card: '#111827'
-            }
-          }
+      (function () {
+        var lang = (location.search.match(/[?&]lang=(pt|en)\b/) || [])[1] || null;
+        if (!lang) {
+          try { lang = localStorage.getItem('lang'); } catch (e) {}
         }
-      };
+        if (lang !== 'pt' && lang !== 'en') {
+          lang = /^pt\b/i.test(navigator.language || '') ? 'pt' : 'en';
+        }
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+      })();
     </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
   </head>
-  <body class="bg-primary text-white font-sans">
-    <!-- Header -->
-    <header class="bg-secondary shadow-lg p-6 flex justify-between items-center sticky top-0 z-50 border-b border-accent">
-      <h1 class="text-3xl font-extrabold tracking-tight text-accent">Felipe | Data Analyst</h1>
-      <nav class="space-x-6 text-lg font-medium">
-        <a href="#about" class="hover:text-accent transition-colors">About</a>
-        <a href="#experience" class="hover:text-accent transition-colors">Experience</a>
-        <a href="#skills" class="hover:text-accent transition-colors">Skills</a>
-        <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
-      </nav>
+  <body>
+    <a class="skip" href="#conteudo"><span lang="pt-BR">Pular para o conteúdo</span><span lang="en">Skip to content</span></a>
+
+    <!-- Cabeçalho -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#topo">Felipe Bachiega</a>
+        <nav class="nav" aria-label="Seções" data-aria-pt="Seções" data-aria-en="Sections">
+          <a href="#projetos"><span lang="pt-BR">Projetos</span><span lang="en">Projects</span></a>
+          <a href="#experiencia"><span lang="pt-BR">Experiência</span><span lang="en">Experience</span></a>
+          <a href="#habilidades"><span lang="pt-BR">Habilidades</span><span lang="en">Skills</span></a>
+          <a href="#contato"><span lang="pt-BR">Contato</span><span lang="en">Contact</span></a>
+        </nav>
+        <div class="lang-switch" role="group" aria-label="Idioma" data-aria-pt="Idioma" data-aria-en="Language">
+          <button type="button" data-set-lang="pt" aria-pressed="true" title="Português">PT</button>
+          <button type="button" data-set-lang="en" aria-pressed="false" title="English">EN</button>
+        </div>
+      </div>
     </header>
 
-    <!-- About -->
-    <section id="about" class="pt-24 pb-20 px-8 bg-primary">
-      <h2 class="text-4xl font-bold text-center mb-12 text-accent">About Me</h2>
-      <div class="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mx-auto text-center">
-        <img src="1744146774061.jpeg" alt="Felipe's photo" class="w-44 h-44 rounded-full object-cover border-4 border-accent shadow-lg" />
-<p class="max-w-xl text-lg leading-relaxed">
-            I'm a Computer Science student and Data Analyst focused on data analysis, business intelligence, and turning data into actionable insights. I currently work at KPMG, where I focus on data analysis, Power BI, DAX, dashboards, and performance indicators. I'm continuously developing my skills in data, programming, SQL, Python, and business intelligence, always looking for ways to improve processes and support better decision-making through data.
-        </p>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="py-20 px-6 bg-card">
-      <h2 class="text-4xl font-bold text-center mb-14 text-accent">Professional Experience</h2>
-      <div class="max-w-4xl mx-auto space-y-10">
-        <div class="bg-secondary p-6 rounded-2xl shadow-xl border-l-4 border-accent">
-          <h3 class="text-2xl font-semibold">Data Analyst - C&Ops (Core Operations)</h3>
-          <p class="text-sm text-gray-300 mb-2">KPMG | 2025 - Present</p>
-          <p class="text-base leading-relaxed">
-            Data analysis and processing to support business decisions and operations. Development and maintenance of Power BI dashboards tracking KPIs, costs, expenses, and results. Creation of metrics and indicators using DAX, and organization of data bases for analysis. Data manipulation and consolidation using Excel and BI tools. Project cost and expense analysis, including tracking actuals vs budgets/limits. Building managerial reports and visualizations to facilitate data interpretation. Supporting business areas in identifying information, inconsistencies, and improvement opportunities. Automation and improvement of data and reporting processes.
-          </p>
-        </div>
-        <div class="bg-secondary p-6 rounded-2xl shadow-xl border-l-4 border-accent">
-          <h3 class="text-2xl font-semibold">IT Support Technician</h3>
-          <p class="text-sm text-gray-300 mb-2">2022 - 2025</p>
-          <p class="text-base leading-relaxed">
-            I worked in the technical support area, assisting clients with the installation, configuration, and troubleshooting of the company's hardware and software. Additionally, I participated in projects focused on implementing hardware and software solutions for clients, ensuring proper integration and operation of access control systems. This experience gave me direct contact with automation technologies and helped me develop skills in customer service, remote support, problem analysis, and teamwork.
-          </p>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="py-20 px-6 bg-primary">
-      <h2 class="text-4xl font-bold text-center mb-14 text-accent">Projects</h2>
-      <div class="max-w-4xl mx-auto space-y-10">
-        <div class="bg-secondary p-6 rounded-2xl shadow-xl border-l-4 border-accent">
-          <h3 class="text-2xl font-semibold">Palmeiras 2026 Data Analysis</h3>
-          <p class="text-sm text-gray-300 mb-2">2026</p>
-          <p class="text-base leading-relaxed mb-4">
-            Interactive web dashboard analyzing Palmeiras football team performance throughout the 2026 season. Built with vanilla HTML, CSS, and JavaScript to visualize match statistics, player performance metrics, and tactical patterns. Features dynamic charts, responsive data tables, and filterable views for match results, goal distributions, possession trends, and key player contributions.
-          </p>
-          <div class="flex flex-wrap gap-3 mb-4">
-            <span class="bg-accent text-white py-1 px-3 rounded-lg text-sm font-medium">HTML</span>
-            <span class="bg-accent text-white py-1 px-3 rounded-lg text-sm font-medium">CSS</span>
-            <span class="bg-accent text-white py-1 px-3 rounded-lg text-sm font-medium">JavaScript</span>
-            <span class="bg-accent text-white py-1 px-3 rounded-lg text-sm font-medium">Chart.js</span>
+    <main id="conteudo">
+      <!-- Apresentação -->
+      <section class="hero" id="topo">
+        <div class="container hero-grid">
+          <div class="hero-text">
+            <h1>Felipe Antunes Bachiega</h1>
+            <p class="lead" lang="pt-BR">Consultor Jr na KPMG e estudante de Ciência da Computação. Construo dashboards e painéis que transformam bases de dados em decisões.</p>
+            <p class="lead" lang="en">Advisory Associate at KPMG and Computer Science student. I build dashboards and panels that turn raw data into decisions.</p>
+            <p class="hero-sub" lang="pt-BR">No dia a dia, trabalho com Power BI, DAX, SQL e Excel para acompanhar indicadores, custos e resultados. Também desenvolvo painéis e aplicações web do zero, em HTML, CSS e JavaScript puros.</p>
+            <p class="hero-sub" lang="en">Day to day I use Power BI, DAX, SQL and Excel to track KPIs, costs and results. I also build dashboards and web apps from scratch in plain HTML, CSS and JavaScript.</p>
+            <p class="hero-place"><span lang="pt-BR">São Bernardo do Campo, SP</span><span lang="en">São Bernardo do Campo, Brazil</span></p>
+            <div class="actions">
+              <a class="btn btn-solid" href="#projetos"><span lang="pt-BR">Ver projetos</span><span lang="en">View projects</span></a>
+              <a class="btn" href="https://www.linkedin.com/in/felipeantunesb/" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="btn" href="https://github.com/Felipeab8" target="_blank" rel="noopener">GitHub</a>
+            </div>
           </div>
-          <a href="https://github.com/Felipeab8/Palmeiras-2026.git" target="_blank" class="text-accent hover:underline font-medium">View Repository →</a>
+          <figure class="portrait">
+            <picture>
+              <!-- No celular a foto aparece pequena: recorte quadrado no rosto -->
+              <source media="(max-width: 899.98px)" srcset="assets/felipe-avatar.jpg" width="320" height="320" />
+              <img
+                src="assets/felipe-800.jpg"
+                srcset="assets/felipe-480.jpg 480w, assets/felipe-800.jpg 800w"
+                sizes="(min-width: 1310px) 340px, 26vw"
+                width="800" height="1000"
+                alt="Foto de Felipe Antunes Bachiega"
+                data-alt-pt="Foto de Felipe Antunes Bachiega"
+                data-alt-en="Photo of Felipe Antunes Bachiega" />
+            </picture>
+          </figure>
         </div>
-        <div class="bg-secondary p-6 rounded-2xl shadow-xl border-l-4 border-accent">
-          <h3 class="text-2xl font-semibold">ParkEasy</h3>
-          <p class="text-sm text-gray-300 mb-2">2024</p>
-          <p class="text-base leading-relaxed mb-4">
-            Parking management system designed to simplify the organization and management of parking spaces. The project focuses on providing an intuitive interface for managing parking operations, with features developed using JavaScript and web technologies. Created as a practical project to improve software development, problem-solving, and application design skills.
-          </p>
-          <div class="flex flex-wrap gap-3 mb-4">
-            <span class="bg-accent text-white py-1 px-3 rounded-lg text-sm font-medium">JavaScript</span>
-            <span class="bg-accent text-white py-1 px-3 rounded-lg text-sm font-medium">HTML</span>
-            <span class="bg-accent text-white py-1 px-3 rounded-lg text-sm font-medium">CSS</span>
-          </div>
-          <a href="https://github.com/Felipeab8/ParkEasy.git" target="_blank" class="text-accent hover:underline font-medium">View Repository →</a>
-        </div>
-        <div class="bg-secondary p-6 rounded-2xl shadow-xl border-l-4 border-accent">
-          <h3 class="text-2xl font-semibold">BMI Calculator</h3>
-          <p class="text-sm text-gray-300 mb-2">2024</p>
-          <p class="text-base leading-relaxed mb-4">
-            BMI Calculator is an Android application developed to calculate Body Mass Index (BMI) based on user-provided information. The project was built as a practical mobile development exercise, focusing on implementing calculation logic, user input handling, and an intuitive interface. It helped strengthen my skills in Android development, application logic, and user experience design.
-          </p>
-          <div class="flex flex-wrap gap-3 mb-4">
-            <span class="bg-accent text-white py-1 px-3 rounded-lg text-sm font-medium">Android</span>
-            <span class="bg-accent text-white py-1 px-3 rounded-lg text-sm font-medium">Java</span>
-            <span class="bg-accent text-white py-1 px-3 rounded-lg text-sm font-medium">XML</span>
-          </div>
-          <a href="https://github.com/Felipeab8/Calculo-de-imc.git" target="_blank" class="text-accent hover:underline font-medium">View Repository →</a>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Skills -->
-    <section id="skills" class="py-20 px-6 bg-primary">
-      <h2 class="text-4xl font-bold text-center mb-14 text-accent">Skills</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl mx-auto text-center">
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">Python</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">JavaScript</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">HTML & CSS</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">Bootstrap</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">SQLite</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">Git</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">Responsive Design</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">Power BI</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">DAX</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">SQL</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">Data Visualization</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">Data Analysis</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">Excel</div>
-        <div class="bg-accent text-white py-3 px-4 rounded-xl shadow-md font-semibold">Dashboard Design</div>
-      </div>
-    </section>
+      <!-- Projetos: a tela principal e as duas menores formam o "videowall" -->
+      <section class="section" id="projetos">
+        <div class="container">
+          <div class="section-head">
+            <h2><span lang="pt-BR">Projetos</span><span lang="en">Projects</span></h2>
+            <p lang="pt-BR">Painéis e aplicações feitos do zero e publicados no GitHub Pages. Clique em uma tela para abrir a versão no ar.</p>
+            <p lang="en">Dashboards and apps built from scratch and published on GitHub Pages. Click a screen to open the live version.</p>
+          </div>
 
-    <!-- Contact -->
-    <section id="contact" class="py-20 px-6 bg-card text-center">
-      <h2 class="text-4xl font-bold mb-8 text-accent">Contact</h2>
-      <p class="mb-8 text-lg">Feel free to reach out via email or through my social media:</p>
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 text-lg font-medium">
-        <span>bachiegafelipe@gmail.com</span>
-        <span>|</span>
-        <a href="https://www.linkedin.com/in/felipeantunesb/" target="_blank" class="underline hover:text-accent">LinkedIn</a>
-        <span>|</span>
-        <a href="https://github.com/Felipeab8" target="_blank" class="underline hover:text-accent">GitHub</a>
+          <div class="wall">
+            <article class="project project--main" aria-labelledby="p-videowall">
+              <a class="screen" href="https://felipeab8.github.io/videowall-coe/" target="_blank" rel="noopener" tabindex="-1">
+                <span class="screen-bar" aria-hidden="true">
+                  <span class="screen-status"><span lang="pt-BR">No ar</span><span lang="en">Live</span></span>
+                  <span class="screen-url">felipeab8.github.io/videowall-coe</span>
+                </span>
+                <img
+                  src="assets/projetos/videowall-coe-1600.jpg"
+                  srcset="assets/projetos/videowall-coe-800.jpg 800w, assets/projetos/videowall-coe-1600.jpg 1600w"
+                  sizes="(min-width: 1244px) 1180px, (min-width: 768px) calc(100vw - 4rem), calc(100vw - 2rem)"
+                  width="1600" height="1000" loading="lazy" decoding="async"
+                  alt="Videowall COE: visão geral da unidade com recepção, classificação, moegas, secagem, armazenagem, aeração, expedição e previsão do tempo"
+                  data-alt-pt="Videowall COE: visão geral da unidade com recepção, classificação, moegas, secagem, armazenagem, aeração, expedição e previsão do tempo"
+                  data-alt-en="Videowall COE: site overview with truck reception, grading, intake hoppers, drying, storage, aeration, shipping and weather forecast" />
+              </a>
+              <div class="project-body">
+                <div class="project-title">
+                  <h3 id="p-videowall">Videowall COE</h3>
+                  <p class="year">2026</p>
+                </div>
+                <div class="project-text">
+                  <p lang="pt-BR">Painel de videowall para a sala de operações de uma unidade de recebimento e armazenagem de grãos. Em uma única tela, mostra fila de caminhões, classificação das cargas, moegas, secagem, armazenagem, aeração dos silos, expedição e previsão do tempo, cada área com status de OK, atenção ou alerta.</p>
+                  <p lang="en">Videowall dashboard for the operations room of a grain receiving and storage facility. One screen shows the truck queue, load grading, intake hoppers, drying, storage, silo aeration, shipping and the weather forecast, with an OK, warning or alert status for each area.</p>
+                  <ul class="highlights" lang="pt-BR">
+                    <li>Modo de edição para arrastar, redimensionar e reescrever os blocos direto na tela</li>
+                    <li>Central de alertas, exportação em PDF e tema claro ou escuro</li>
+                    <li>Mapas com Leaflet e MapLibre, telas de câmeras e visão das demais unidades</li>
+                  </ul>
+                  <ul class="highlights" lang="en">
+                    <li>Edit mode to drag, resize and rewrite blocks right on the screen</li>
+                    <li>Alert center, PDF export and light or dark theme</li>
+                    <li>Leaflet and MapLibre maps, camera screens and views of the other sites</li>
+                  </ul>
+                </div>
+                <div class="project-meta">
+                  <p class="built"><strong><span lang="pt-BR">Feito com</span><span lang="en">Built with</span></strong> HTML, CSS, JavaScript, Leaflet, MapLibre GL</p>
+                  <p class="project-links">
+                    <a class="btn btn-solid" href="https://felipeab8.github.io/videowall-coe/" target="_blank" rel="noopener"><span lang="pt-BR">Abrir demo</span><span lang="en">Open demo</span></a>
+                    <a class="btn" href="https://github.com/Felipeab8/videowall-coe" target="_blank" rel="noopener"><span lang="pt-BR">Ver código</span><span lang="en">View code</span></a>
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="project" aria-labelledby="p-palmeiras">
+              <a class="screen" href="https://felipeab8.github.io/Palmeiras-2026/" target="_blank" rel="noopener" tabindex="-1">
+                <span class="screen-bar" aria-hidden="true">
+                  <span class="screen-status"><span lang="pt-BR">No ar</span><span lang="en">Live</span></span>
+                  <span class="screen-url">felipeab8.github.io/Palmeiras-2026</span>
+                </span>
+                <img
+                  src="assets/projetos/palmeiras-2026-800.jpg"
+                  srcset="assets/projetos/palmeiras-2026-800.jpg 800w, assets/projetos/palmeiras-2026-1600.jpg 1600w"
+                  sizes="(min-width: 1244px) 570px, (min-width: 900px) calc(50vw - 3.25rem), (min-width: 768px) calc(100vw - 4rem), calc(100vw - 2rem)"
+                  width="1600" height="1000" loading="lazy" decoding="async"
+                  alt="Palmeiras BI 2026: KPIs da temporada e desempenho por torneio"
+                  data-alt-pt="Palmeiras BI 2026: KPIs da temporada e desempenho por torneio"
+                  data-alt-en="Palmeiras BI 2026: season KPIs and performance by tournament" />
+              </a>
+              <div class="project-body">
+                <div class="project-title">
+                  <h3 id="p-palmeiras">Palmeiras BI 2026</h3>
+                  <p class="year">2026</p>
+                </div>
+                <div class="project-text">
+                  <p lang="pt-BR">Dashboard de desempenho do Palmeiras na temporada 2026, alimentado por uma planilha Excel. Os filtros de competição, mando, resultado e adversário recalculam os KPIs, o aproveitamento por torneio, o casa × fora, o ranking de adversários e a evolução de pontos.</p>
+                  <p lang="en">Performance dashboard for Palmeiras in the 2026 season, fed by an Excel spreadsheet. Competition, venue, result and opponent filters recalculate the KPIs, win rate by tournament, home vs away, opponent rankings and points progression.</p>
+                  <ul class="highlights" lang="pt-BR">
+                    <li>Gráficos em SVG desenhados à mão, sem biblioteca de gráficos</li>
+                    <li>Upload de planilha .xlsx com SheetJS e a última base salva no navegador</li>
+                    <li>Exportação das partidas filtradas em CSV pronto para o Excel</li>
+                  </ul>
+                  <ul class="highlights" lang="en">
+                    <li>Hand-drawn SVG charts, no charting library</li>
+                    <li>.xlsx upload with SheetJS, with the last dataset saved in the browser</li>
+                    <li>CSV export of the filtered matches, ready for Excel</li>
+                  </ul>
+                </div>
+                <div class="project-meta">
+                  <p class="built"><strong><span lang="pt-BR">Feito com</span><span lang="en">Built with</span></strong> HTML, CSS, JavaScript, SVG, SheetJS</p>
+                  <p class="project-links">
+                    <a class="btn btn-solid" href="https://felipeab8.github.io/Palmeiras-2026/" target="_blank" rel="noopener"><span lang="pt-BR">Abrir demo</span><span lang="en">Open demo</span></a>
+                    <a class="btn" href="https://github.com/Felipeab8/Palmeiras-2026" target="_blank" rel="noopener"><span lang="pt-BR">Ver código</span><span lang="en">View code</span></a>
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="project" aria-labelledby="p-balcao">
+              <a class="screen" href="https://felipeab8.github.io/balcao-de-negocios/" target="_blank" rel="noopener" tabindex="-1">
+                <span class="screen-bar" aria-hidden="true">
+                  <span class="screen-status"><span lang="pt-BR">No ar</span><span lang="en">Live</span></span>
+                  <span class="screen-url">felipeab8.github.io/balcao-de-negocios</span>
+                </span>
+                <img
+                  src="assets/projetos/balcao-de-negocios-800.jpg"
+                  srcset="assets/projetos/balcao-de-negocios-800.jpg 800w, assets/projetos/balcao-de-negocios-1600.jpg 1600w"
+                  sizes="(min-width: 1244px) 570px, (min-width: 900px) calc(50vw - 3.25rem), (min-width: 768px) calc(100vw - 4rem), calc(100vw - 2rem)"
+                  width="1600" height="1000" loading="lazy" decoding="async"
+                  alt="Balcão de Negócios: tela de abertura com o dossiê do clube sorteado e os modos de jogo"
+                  data-alt-pt="Balcão de Negócios: tela de abertura com o dossiê do clube sorteado e os modos de jogo"
+                  data-alt-en="Balcão de Negócios: opening screen with the drawn club's dossier and game modes" />
+              </a>
+              <div class="project-body">
+                <div class="project-title">
+                  <h3 id="p-balcao">Balcão de Negócios</h3>
+                  <p class="year">2026</p>
+                </div>
+                <div class="project-text">
+                  <p lang="pt-BR">Jogo de navegador sobre a janela de transferências do futebol. Você assume um clube de uma das 13 principais ligas, com o caixa e a folha salarial que ele tem, e tem 18 dias para contratar, vender e fechar o elenco. No fim, a imprensa dá a nota, de F a A+.</p>
+                  <p lang="en">Browser game about the football transfer window. You take over a club from one of the 13 top leagues, with its real budget and wage bill, and have 18 days to sign, sell and close your squad. At the end, the press grades your window from F to A+.</p>
+                  <ul class="highlights" lang="pt-BR">
+                    <li>150 clubes reais e três modos de dificuldade</li>
+                    <li>Negociação em duas fases: valor com o clube e contrato com o jogador e o empresário</li>
+                    <li>Interface em português, inglês e espanhol, sem dependências nem servidor</li>
+                  </ul>
+                  <ul class="highlights" lang="en">
+                    <li>150 real clubs and three difficulty modes</li>
+                    <li>Two-stage deals: the fee with the club, then the contract with the player and agent</li>
+                    <li>Available in Portuguese, English and Spanish, with no dependencies or server</li>
+                  </ul>
+                </div>
+                <div class="project-meta">
+                  <p class="built"><strong><span lang="pt-BR">Feito com</span><span lang="en">Built with</span></strong> HTML, CSS, JavaScript</p>
+                  <p class="project-links">
+                    <a class="btn btn-solid" href="https://felipeab8.github.io/balcao-de-negocios/" target="_blank" rel="noopener"><span lang="pt-BR">Jogar agora</span><span lang="en">Play now</span></a>
+                    <a class="btn" href="https://github.com/Felipeab8/balcao-de-negocios" target="_blank" rel="noopener"><span lang="pt-BR">Ver código</span><span lang="en">View code</span></a>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="earlier">
+            <h3 class="earlier-title"><span lang="pt-BR">Projetos anteriores</span><span lang="en">Earlier projects</span></h3>
+            <div class="earlier-grid">
+              <article class="mini" aria-labelledby="p-parkeasy">
+                <div class="mini-title">
+                  <h4 id="p-parkeasy">ParkEasy</h4>
+                  <p class="year">2023</p>
+                </div>
+                <p lang="pt-BR">Sistema web para encontrar estacionamentos e gerenciar o negócio, com cadastro e login de usuários, cadastro de empresas e veículos e painel de administrador. O front-end em Bootstrap consome APIs REST em Node.js e Express ligadas a um banco MySQL.</p>
+                <p lang="en">Web app for finding parking and running a parking business, with user sign-up and login, company and vehicle registration, and an admin panel. The Bootstrap front end talks to REST APIs built with Node.js and Express on a MySQL database.</p>
+                <p class="built"><strong><span lang="pt-BR">Feito com</span><span lang="en">Built with</span></strong> HTML, CSS, Bootstrap, JavaScript, Node.js, Express, MySQL</p>
+                <p><a href="https://github.com/Felipeab8/ParkEasy" target="_blank" rel="noopener"><span lang="pt-BR">Ver código no GitHub</span><span lang="en">View code on GitHub</span></a></p>
+              </article>
+              <article class="mini" aria-labelledby="p-imc">
+                <div class="mini-title">
+                  <h4 id="p-imc"><span lang="pt-BR">Calculadora de IMC</span><span lang="en">BMI Calculator</span></h4>
+                  <p class="year">2024</p>
+                </div>
+                <p lang="pt-BR">Aplicativo Android que calcula o Índice de Massa Corporal a partir do peso e da altura, mostra a classificação em seis faixas e lista o histórico dos cálculos feitos na sessão.</p>
+                <p lang="en">Android app that calculates Body Mass Index from weight and height, places the result in one of six categories and lists the calculations made during the session.</p>
+                <p class="built"><strong><span lang="pt-BR">Feito com</span><span lang="en">Built with</span></strong> Kotlin, Android, RecyclerView</p>
+                <p><a href="https://github.com/Felipeab8/Calculo-de-imc" target="_blank" rel="noopener"><span lang="pt-BR">Ver código no GitHub</span><span lang="en">View code on GitHub</span></a></p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experiência e formação -->
+      <section class="section" id="experiencia">
+        <div class="container">
+          <div class="section-head">
+            <h2><span lang="pt-BR">Experiência</span><span lang="en">Experience</span></h2>
+          </div>
+          <ol class="timeline">
+            <li>
+              <p class="when"><span lang="pt-BR">2025 – atual</span><span lang="en">2025 – present</span></p>
+              <div>
+                <h3 class="role"><span lang="pt-BR">Consultor Jr em C&amp;Ops (Core Operations)</span><span lang="en">Advisory Associate, C&amp;Ops (Core Operations)</span></h3>
+                <p class="org">KPMG</p>
+                <ul class="duties" lang="pt-BR">
+                  <li>Desenvolvo e mantenho dashboards em Power BI que acompanham KPIs, custos, despesas e resultados.</li>
+                  <li>Crio métricas e indicadores em DAX, e organizo e consolido as bases de dados no Excel e em ferramentas de BI.</li>
+                  <li>Analiso custos e despesas de projetos, comparando o realizado com orçamentos e limites.</li>
+                  <li>Monto relatórios gerenciais e visualizações que facilitam a leitura dos dados pelas áreas de negócio.</li>
+                  <li>Ajudo as áreas a encontrar inconsistências e oportunidades de melhoria, e automatizo processos de dados e de relatórios.</li>
+                </ul>
+                <ul class="duties" lang="en">
+                  <li>Build and maintain Power BI dashboards that track KPIs, costs, expenses and results.</li>
+                  <li>Create metrics and indicators in DAX, and organize and consolidate datasets in Excel and BI tools.</li>
+                  <li>Analyze project costs and expenses, comparing actuals against budgets and limits.</li>
+                  <li>Produce management reports and visualizations that make data easier for business teams to read.</li>
+                  <li>Help teams spot inconsistencies and improvement opportunities, and automate data and reporting processes.</li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <p class="when">2022 – 2025</p>
+              <div>
+                <h3 class="role"><span lang="pt-BR">Técnico de Suporte de TI</span><span lang="en">IT Support Technician</span></h3>
+                <ul class="duties" lang="pt-BR">
+                  <li>Atendi clientes na instalação, configuração e solução de problemas de hardware e software da empresa, inclusive com suporte remoto.</li>
+                  <li>Participei de projetos de implantação de soluções para clientes, garantindo a integração e o funcionamento de sistemas de controle de acesso.</li>
+                  <li>Trabalhei com tecnologias de automação e desenvolvi atendimento ao cliente, análise de problemas e trabalho em equipe.</li>
+                </ul>
+                <ul class="duties" lang="en">
+                  <li>Helped customers install, configure and troubleshoot the company's hardware and software, including remote support.</li>
+                  <li>Took part in projects deploying hardware and software solutions for customers, making sure access control systems were integrated and running properly.</li>
+                  <li>Worked hands-on with automation technologies and built skills in customer service, problem analysis and teamwork.</li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+
+          <h3 class="subhead"><span lang="pt-BR">Formação</span><span lang="en">Education</span></h3>
+          <ol class="timeline">
+            <li>
+              <p class="when"><span lang="pt-BR">Em andamento</span><span lang="en">In progress</span></p>
+              <div>
+                <h4 class="role"><span lang="pt-BR">Ciência da Computação</span><span lang="en">Computer Science</span></h4>
+                <p class="org"><span lang="pt-BR">Graduação</span><span lang="en">Undergraduate degree</span></p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Habilidades -->
+      <section class="section" id="habilidades">
+        <div class="container">
+          <div class="section-head">
+            <h2><span lang="pt-BR">Habilidades</span><span lang="en">Skills</span></h2>
+          </div>
+          <dl class="skills">
+            <div>
+              <dt><span lang="pt-BR">Dados e BI</span><span lang="en">Data and BI</span></dt>
+              <dd>
+                <ul class="skill-list">
+                  <li>Power BI</li>
+                  <li>DAX</li>
+                  <li>SQL</li>
+                  <li>Excel</li>
+                  <li><span lang="pt-BR">análise de dados</span><span lang="en">data analysis</span></li>
+                  <li><span lang="pt-BR">visualização de dados</span><span lang="en">data visualization</span></li>
+                  <li><span lang="pt-BR">design de dashboards</span><span lang="en">dashboard design</span></li>
+                </ul>
+              </dd>
+            </div>
+            <div>
+              <dt><span lang="pt-BR">Desenvolvimento</span><span lang="en">Development</span></dt>
+              <dd>
+                <ul class="skill-list">
+                  <li>Python</li>
+                  <li>JavaScript</li>
+                  <li>HTML <span lang="pt-BR">e</span><span lang="en">and</span> CSS</li>
+                  <li>Kotlin</li>
+                  <li>Node.js</li>
+                  <li>Express</li>
+                </ul>
+              </dd>
+            </div>
+            <div>
+              <dt><span lang="pt-BR">Bancos de dados</span><span lang="en">Databases</span></dt>
+              <dd>
+                <ul class="skill-list">
+                  <li>MySQL</li>
+                  <li>SQLite</li>
+                </ul>
+              </dd>
+            </div>
+            <div>
+              <dt><span lang="pt-BR">Ferramentas e práticas</span><span lang="en">Tools and practices</span></dt>
+              <dd>
+                <ul class="skill-list">
+                  <li>Git <span lang="pt-BR">e</span><span lang="en">and</span> GitHub</li>
+                  <li>GitHub Pages</li>
+                  <li>Bootstrap</li>
+                  <li><span lang="pt-BR">design responsivo</span><span lang="en">responsive design</span></li>
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Contato -->
+      <section class="section contact" id="contato">
+        <div class="container">
+          <h2><span lang="pt-BR">Contato</span><span lang="en">Contact</span></h2>
+          <p class="contact-intro" lang="pt-BR">Para conversar sobre dados, dashboards ou oportunidades, mande um e-mail ou me chame no LinkedIn.</p>
+          <p class="contact-intro" lang="en">To talk about data, dashboards or opportunities, send me an email or reach out on LinkedIn.</p>
+          <a class="email" href="mailto:bachiegafelipe@gmail.com">bachiegafelipe@gmail.com</a>
+          <div class="contact-actions">
+            <button type="button" class="btn" data-copy="bachiegafelipe@gmail.com">
+              <span class="copy-idle"><span lang="pt-BR">Copiar e-mail</span><span lang="en">Copy email</span></span>
+              <span class="copy-done"><span lang="pt-BR">E-mail copiado</span><span lang="en">Email copied</span></span>
+            </button>
+            <a class="btn" href="https://www.linkedin.com/in/felipeantunesb/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://github.com/Felipeab8" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <p class="sr-only" role="status" aria-live="polite" data-copy-status></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span data-year>2026</span> Felipe Antunes Bachiega</p>
+        <p><span lang="pt-BR">Feito em HTML, CSS e JavaScript, sem frameworks.</span><span lang="en">Built with HTML, CSS and JavaScript, no frameworks.</span></p>
       </div>
-    </section> 
+    </footer>
   </body>
 </html>
